@@ -23,6 +23,7 @@ jobs:
       - run: npm run build
 
       - uses: actions/upload-artifact@v3
+        if: always() # jobが失敗しても常に実行。通常のGithubActionsは失敗した時点で処理が中断されてしまう
         with:
           name: coverage
           path: backend/coverage/** # **: coverage以下のすべてのファイル
