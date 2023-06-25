@@ -22,3 +22,13 @@ jobs:
       - run: npm run test
       - run: npm run build
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: backend/coverage/** # **: coverage以下のすべてのファイル
+          retention-days: 5 # 5日間保存される
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: backend/dist/index.js
+          retention-days: 5
