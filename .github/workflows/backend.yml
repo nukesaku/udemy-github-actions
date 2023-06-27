@@ -25,6 +25,9 @@ jobs:
       - run: npm ci
       - run: npm run test -- --coverage
       - run: npm run build
+      
+      - run: node dist/index.js &
+      - run: npm run test:api
 
       - uses: actions/upload-artifact@v3
         if: always() # jobが失敗しても常に実行。通常のGithubActionsは失敗した時点で処理が中断されてしまう
