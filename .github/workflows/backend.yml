@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-  schedule:
+  # schedule:
     # 日本時間で21時に実行。12(UTC) + 9 = 21(JST)
-    - cron: '0 12 * * *'
+    # - cron: '0 12 * * *'
   
 
 defaults:
@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
       
       - run: node dist/index.js &
+      - run: npx wait-on -t 10000 http://localhost:8080/api/health
       - run: npm run test:api
 
       - uses: actions/upload-artifact@v3
