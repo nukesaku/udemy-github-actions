@@ -14,4 +14,6 @@ jobs:
     if: github.event_name == 'push' # git pushされた時だけdeployを実行
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: aws s3 sync . s3://j-sample-upload --exact-timestamps --region ap-northeast-1
+
