@@ -1,0 +1,17 @@
+name: frontend
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  deploy: # job間で実行環境は共有されない
+    if: github.event_name == 'push' # git pushされた時だけdeployを実行
+    runs-on: ubuntu-latest
+    steps:
+      - run: aws s3 sync . s3://j-sample-upload --exact-timestamps --region ap-northeast-1
