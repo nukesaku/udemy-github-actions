@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'backend/**'
+      - '.github/**'
   # schedule:
     # 日本時間で21時に実行。12(UTC) + 9 = 21(JST)
     # - cron: '0 12 * * *'
